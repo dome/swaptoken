@@ -1,0 +1,59 @@
+{
+  "name": "xswap",
+  "version": "0.1.0",
+  "homepage": "https://xtoken.fi/",
+  "private": true,
+  "dependencies": {
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.4.0",
+    "@testing-library/user-event": "^7.2.1",
+    "apexcharts": "^3.15.5",
+    "axios": "^0.21.1",
+    "bootstrap": "^4.4.1",
+    "ethers": "^5.0.31",
+    "node-sass": "^4.13.1",
+    "peity-react": "0.0.7",
+    "query-string": "^6.14.1",
+    "react": "^16.12.0",
+    "react-apexcharts": "^1.3.6",
+    "react-async": "^10.0.1",
+    "react-bootstrap": "^1.0.0-beta.16",
+    "react-dom": "^16.12.0",
+    "react-external-link": "^1.2.1",
+    "react-hook-form": "^6.15.4",
+    "react-modal-video": "^1.2.3",
+    "react-preloaders": "^3.0.3",
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "3.4.1",
+    "react-slick": "^0.25.2",
+    "react-video": "^1.5.3",
+    "serialize-query-params": "^1.3.1",
+    "slick-carousel": "^1.8.1",
+    "token-amount": "^0.3.0",
+    "use-clipboard-copy": "^0.1.2",
+    "use-query-params": "^1.2.0",
+    "web3": "^1.3.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "sass": "node-sass --watch ./src/scss/main.scss ./src/css/style.css --source-map ./src/css/style.css.map"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

@@ -1,0 +1,43 @@
+.page-title {
+  padding: 30px 0;
+//   background: url("../images/breadcrumb/1.jpg");
+  &.dashboard {
+    background: transparent;
+    margin-left: 75px;
+    padding: 20px 0;
+  }
+  .page-title-content {
+    p {
+      // color: #fff;
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 0px;
+      color: $primary;
+      span {
+        color: $body-color;
+      }
+    }
+  }
+
+}
+
+
+.breadcrumbs {
+    display: flex;
+    justify-content: flex-end;
+
+    li {
+      a {
+        color: $text-muted;
+        display: inline-block;
+        margin-left: 15px;
+        font-size: 14px;
+      }
+
+      &.active {
+        a {
+          color: $primary;
+        }
+      }
+    }
+  }

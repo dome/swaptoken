@@ -1,0 +1,73 @@
+// @import "../vendor/nice-select/css/nice-select.css";
+
+* {
+    outline: none;
+    padding: 0;
+    &::after {
+        margin: 0;
+        padding: 0;
+    }
+    &::before {
+        margin: 0;
+        padding: 0;
+    }
+}
+
+body {
+    // font-family: $pp;
+    // font-size: 16px;
+    // color      : $tl;
+    line-height: 1.75;
+    // font-weight: 300;
+    &.fixed {
+        overflow: hidden;
+        position: fixed;
+    }
+    &.dashboard-bg{
+        // background: #f9f9f9;
+    }
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    // color       : $td;
+    text-decoration: none;
+    outline: none;
+    &:hover,
+    &:focus,
+    &.active {
+        text-decoration: none;
+        outline: none;
+        color: $primary;
+    }
+}
+
+#main-wrapper {
+    // opacity: 0;
+    transition: all 0.25s ease-in;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+    // height     : 100vh;
+    // padding-top: 75px;
+    margin-top: 100px;
+    &.show {
+        opacity: 1;
+    }
+}
+.content-body {
+    margin-left: 75px;
+    margin-top: 15px;
+}
+
+.container-fluid{
+    max-width: 95%;
+}

@@ -1,0 +1,39 @@
+.footer{
+    border-top:1px solid #203055;
+    background: #1B2A4E;
+    padding: 27px 0px;
+    &.dashboard{
+        background: #f9f9f9;
+        margin-left: 75px;
+        border-color: $border-color;
+    }
+    .copyright{
+        p{
+            margin: 0;
+            font-size: 14px;
+            color: #7f88a6;
+            a{
+                color: $primary;
+                font-weight: 700;
+            }
+        }
+    }
+    .footer-social{
+        text-align: right;
+        li{
+            display: inline-block;
+            a{
+                color: #7f88a6;
+                padding: 0px 10px;
+            }
+        }
+    }
+
+    .social{
+        a{
+            display: inline-block;
+            color: #7f88a6;
+            padding: 0px 10px;
+        }
+    }
+}

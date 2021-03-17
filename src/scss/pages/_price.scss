@@ -1,0 +1,91 @@
+.price-grid {
+  .card {
+    border: 1px solid $border-color;
+    // box-shadow: 0 1.5rem 4rem rgba(22, 28, 45, 0.1);
+    .card-header {
+      padding: 15px 15px 0;
+      border: 0px;
+      .media {
+        align-items: center;
+      }
+      .media-body {
+        color: $headings-color;
+      }
+      i {
+        margin-right: 10px;
+        font-size: 30px;
+      }
+      p {
+        font-size: 14px;
+      }
+    }
+    .card-body {
+      padding: 15px 15px 0px !important;
+      h3 {
+        font-size: 20px;
+        font-weight: 700;
+      }
+    }
+  }
+}
+
+.coin-search {
+  padding-bottom: 70px;
+  .search-box {
+    form {
+      display: flex;
+      .btn {
+        margin-left: 15px;
+        padding: 8px 30px;
+      }
+    }
+  }
+}
+
+.sort-view {
+  position: absolute;
+  right: 0;
+
+  @include respond('phone'){
+      position: relative;
+      margin-bottom: 30px;
+  }
+
+  .search-timeline {
+    a {
+      color: $headings-color;
+      font-size: 18px;
+      display: inline-block;
+      margin-right: 15px;
+      font-weight: 600;
+      &:hover,
+      &:focus,
+      &:active,
+      &.active {
+        color: $primary;
+      }
+    }
+  }
+}
+
+.coin-view {
+  .nav {
+    margin-bottom: 0px;
+    border-bottom: 0px;
+
+    .nav-link {
+      background: lighten($primary, 45%);
+      color: $primary;
+      margin-right: 10px;
+      min-width: 75px;
+      text-align: center;
+      &:hover,
+      &:focus,
+      &:active,
+      &.active {
+        background: $primary;
+        color: $white;
+      }
+    }
+  }
+}

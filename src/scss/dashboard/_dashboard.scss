@@ -1,0 +1,206 @@
+.widget-card {
+  background: $gray-100;
+  border-radius: 15px;
+  margin-bottom: 15px;
+  padding: 0px 20px;
+  .widget-stat {
+    min-width: 180px;
+    padding: 20px 0;
+    h5 {
+      color: $body-color;
+    }
+    i {
+      font-size: 24px;
+      // color: #fff;
+    }
+  }
+}
+
+.profile_chart {
+  &.card {
+    .card-header {
+      border: 0px;
+      // padding-bottom: 0px;
+      @include respond("phone-land") {
+        flex-direction: column;
+      }
+    }
+    .card-body {
+      // padding: 10px 45px 30px;
+      .chart_current_data {
+        min-width: 165px;
+        border-radius: 16px;
+        background: $white;
+        padding: 13px 20px;
+        display: inline-block;
+        margin-bottom: 40px;
+        h3 {
+          font-size: 36px;
+          color: $primary;
+          margin-bottom: 0px;
+          line-height: 43px;
+        }
+        p {
+          margin-bottom: 0px;
+          font-size: 14px;
+          font-weight: 500;
+          color: $headings-color;
+        }
+      }
+    }
+  }
+}
+
+.duration-option {
+  box-shadow: 0px 36px 48px rgba(31, 66, 135, 0.04);
+  position: absolute;
+  right: 0;
+  top: 0;
+
+  @include respond("phone-land") {
+    position: relative;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  a,
+  button {
+    display: inline-block;
+    margin-left: 10px;
+    text-align: center;
+    padding: 5px 15px;
+    border: 1px solid $border-color;
+    // float: left;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    border-radius: 5px;
+    // color: $white;
+    &:hover,
+    &:focus,
+    &.active {
+      background: $primary;
+      color: $white;
+      border-right: 1px solid transparent;
+    }
+    // &:first-child {
+    //     border-top-left-radius: 25px;
+    //     border-bottom-left-radius: 25px;
+    // }
+    // &:last-child {
+    //     border: 0px;
+    // }
+  }
+}
+
+.chart-stat {
+  background: $gray-100;
+  border-radius: 15px;
+  padding: 15px 15px;
+  margin-bottom: 15px;
+  @include custommq($min: 1200px, $max: 1350px) {
+    padding: 15px 7px;
+  }
+  h5 {
+    margin-bottom: 5px;
+  }
+}
+
+.transaction-table {
+  td {
+    padding: 1.25rem 0.75rem;
+  }
+  i.cc {
+    font-size: 22px;
+    margin-right: 10px;
+  }
+  .sold-thumb {
+    background: $danger;
+    color: $white;
+    border-radius: 50px;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    i {
+      font-weight: 700;
+      // font-size: 18px;
+    }
+  }
+  .buy-thumb {
+    background: $success;
+    color: $white;
+    border-radius: 15px;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    i {
+      font-weight: 700;
+      // font-size: 22px;
+    }
+  }
+  .badge {
+    color: #fff;
+  }
+}
+
+.balance-widget {
+  ul {
+    li {
+      padding: 18px;
+      align-items: center;
+      border-bottom: 0px solid $border-color;
+      background: $gray-100;
+      border-radius: 15px;
+      margin-bottom: 15px;
+      i {
+        font-size: 30px;
+      }
+    }
+  }
+}
+
+.total-balance {
+  padding: 50px 0 35px;
+  text-align: center;
+}
+
+// Apps Download
+.apps-download {
+  background-image: url("./../images/app.png");
+  background-color: #3a3361;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  z-index: 2;
+  &::after {
+    position: absolute;
+    content: "";
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: #3a3361;
+    opacity: 0.95;
+    z-index: -1;
+    border-radius: 5px;
+  }
+  // .card-title {
+  //     color: $white;
+  // }
+}
+
+.apps-download-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  min-height: 387px;
+  li {
+    color: $white;
+    margin-bottom: 15px;
+  }
+}
