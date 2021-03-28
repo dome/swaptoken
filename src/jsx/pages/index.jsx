@@ -1,53 +1,51 @@
 import React, { useState } from 'react';
+import Async from 'react-async';
+
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import { ExternalLink } from 'react-external-link';
 import { useClipboard } from "use-clipboard-copy";
 import { useForm } from "react-hook-form";
 import queryString from 'query-string';
-import Async from 'react-async';
 // import { withRouter } from "react-router";
 import Header1 from './../layout/header1';
 import Footer1 from './../layout/footer1';
 
 // import Testimonial from '../element/testimonial';
 import { ethers } from "ethers";
-import TokenAmount from 'token-amount'
+// import TokenAmount from 'token-amount'
 import { Contract } from "@ethersproject/contracts";
-import { getDefaultProvider } from "@ethersproject/providers";
+// import { getDefaultProvider } from "@ethersproject/providers";
 //import { utils } from "@ethersproject/utils";
 import { addresses, abis } from "../contracts";
-
-
-//this.dome=1
+const defaultProvider = new ethers.providers.Web3Provider(window.ethereum);
+const signer = defaultProvider.getSigner();
+const busd = new Contract(addresses.busd, abis.erc20, defaultProvider);
 
 async function getBalance() {
-
+    console.log("getBalance");
     // Should replace with the end-user wallet, e.g. Metamask
-    const defaultProvider = new ethers.providers.Web3Provider(window.ethereum)
-    const signer = defaultProvider.getSigner()
-    const busd = new Contract(addresses.busd, abis.erc20, defaultProvider);
-    const tokenBalance = await busd.balanceOf(signer.getAddress());
-    //console.log(signer.getAddress())
-    //setUSD(tokenBalance)
-    // console.log({ tokenBalance: tokenBalance.toString() });
-    return tokenBalance.toString()
-
+    if (busd && signer) {
+        const tokenBalance = await busd.balanceOf(signer.getAddress());
+        return tokenBalance.toString()
+    }
+    return "0";
 }
-async function getAccount() {
-    // Should replace with the end-user wallet, e.g. Metamask
-    const defaultProvider = new ethers.providers.Web3Provider(window.ethereum)
-    const signer = defaultProvider.getSigner()
-    console.log("Get Acct")
 
-    return signer.getAddress()
+async function getAccount() {
+    console.log("getAccount");
+    // Should replace with the end-user wallet, e.g. Metamask
+    if (signer) {
+        return signer.getAddress()
+    }
+    return "";
 }
 
 function Homepage() {
     const clipboard = useClipboard();
+    const [acct, setAcct] = useState("");
     const [boloRate, setBoloRate] = useState("");
     //const [balance, setBalance] = useState("");
     const [bolo, setBolo] = useState("");
-    const [acct, setAcct] = useState("");
     const history = useHistory();
     const { register, handleSubmit, setValue, watch, errors } = useForm();
     let location = useLocation();
@@ -131,10 +129,6 @@ function Homepage() {
             console.log(signedTX)
             swapWithSigner.swap(busdamount, data.refAccount, options);
         });
-
-
-
-
     }
 
 
@@ -144,7 +138,6 @@ function Homepage() {
             <div className="intro">
                 <div className="container">
                     <div className="row justify-content-between align-items-center">
-
                         <div className="col-xl-6 col-lg-6 col-12">
                             <div className="intro-form-exchange">
                                 <form onSubmit={handleSubmit(onSubmit)}>
@@ -162,13 +155,16 @@ function Homepage() {
                                                 <h6 className="mb-0">USDT:0x55d398326f99059ff775485246999027b319795</h6>
                                             </ExternalLink>
                                             <Async promiseFn={getBalance}>
-                                                {({ data, err, isLoading }) => {
+                                                {({ data, error, isLoading }) => {
+                                                    (() => isLoading ? console.log("Async getBalance isLoading") : null)();
                                                     if (data) {
                                                         return (
                                                             <h6 className="mb-0"> Balance : {parseFloat(ethers.utils.formatEther(data)).toPrecision(4)} </h6>
                                                         )
-                                                    } else {
-                                                        // console.log(err)
+                                                    }
+                                                    
+                                                    if (error) {
+                                                        console.log(error);
                                                     }
                                                 }}
                                             </Async>
@@ -208,16 +204,23 @@ function Homepage() {
                                             </div>
                                         )}
                                         <Async promiseFn={getAccount}>
-                                            {({ data, err, isLoading }) => {
-                                                if (data)
-                                                setAcct(data)
-                                                    return (
-                                                        <div>
-                                                            <div className="d-flex justify-content-between mt-0 align-items-center">
-                                                                <h6 className="mb-0">Account: {data}</h6>
+                                            {({ data, error, isLoading }) => {
+                                                (() => isLoading ? console.log("Async getBalance isLoading") : null)();
+    
+                                                if (data) {
+                                                    // setAcct(data)
+                                                        return (
+                                                            <div>
+                                                                <div className="d-flex justify-content-between mt-0 align-items-center">
+                                                                    <h6 className="mb-0">Account: {data}</h6>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                    )
+                                                        )
+                                                }
+                                                   
+                                                if (error) {
+                                                    console.log(error);
+                                                }
                                             }}
                                         </Async>
                                     </div>
@@ -239,6 +242,7 @@ function Homepage() {
                                     <button className="btn  btn-primary">Swap Now</button>
                                 </ExternalLink>
                                 <button onClick={() => clipboard.copy("https://buy.bollo.me/?ref="+acct)} className="btn btn-outline-primary"> Copy Referal Link</button>
+
                             </div>
 
                         </div>
@@ -246,10 +250,10 @@ function Homepage() {
                 </div>
             </div>
 
-
-
+    
             <Footer1 />
         </>
+            
     )
 
 }
