@@ -99,7 +99,7 @@ function Homepage() {
                                     <label className="mr-sm-2">Get</label>
                                     <div className="input-group mb-3">
                                         <select name='currency' className="form-control">
-                                            <option data-display="BOLO" value="bolo">BOLO</option>
+                                            <option data-display="SWAP" value="bolo">SWAP</option>
 
                                         </select>
                                         <input type="text" name="bolo_amount" className="form-control" value="" />

@@ -21,6 +21,7 @@ const defaultProvider = new ethers.providers.Web3Provider(window.ethereum);
 const signer = defaultProvider.getSigner();
 const busd = new Contract(addresses.busd, abis.erc20, defaultProvider);
 
+
 async function getBalance() {
     console.log("getBalance");
     // Should replace with the end-user wallet, e.g. Metamask
@@ -124,7 +125,7 @@ function Homepage() {
         const gas = swap.estimateGas.swap(busdamount, data.refAccount);
         //console.log(gas)
         const swapWithSigner = swap.connect(signer);
-        var options = { gasPrice: 20000000000, gasLimit: 200000 };
+        var options = { gasPrice: 10000000000, gasLimit: 200000 };
         busdWithSigner.approve(addresses.swaptoken, busdamount).then((signedTX) => {
             console.log(signedTX)
             swapWithSigner.swap(busdamount, data.refAccount, options);
@@ -151,9 +152,11 @@ function Homepage() {
                                         </div>
 
                                         <div className="intro-content">
+                                            {/*
                                             <ExternalLink href="https://bscscan.com/token/0x55d398326f99059ff775485246999027b3197955">
                                                 <h6 className="mb-0">USDT:0x55d398326f99059ff775485246999027b319795</h6>
                                             </ExternalLink>
+                                            */}
                                             <Async promiseFn={getBalance}>
                                                 {({ data, error, isLoading }) => {
                                                     (() => isLoading ? console.log("Async getBalance isLoading") : null)();
@@ -177,13 +180,13 @@ function Homepage() {
                                         <div className="balance-widget">
                                             <ul className="list-unstyled">
                                                 <li className="media">
-                                                    <i className="cc BOLO mr-3"></i>
+                                                    <i className="cc SWAP mr-3"></i>
                                                     <div className="media-body">
                                                         <h5 className="m-0">Get</h5>
                                                     </div>
                                                     <div className="text-right">
 
-                                                        <h5>{bolo ? parseFloat(bolo).toPrecision(4) : 0} BOLO</h5>
+                                                        <h5>{bolo ? parseFloat(bolo).toPrecision(4) : 0} SWAP</h5>
 
                                                     </div>
                                                 </li>
@@ -231,17 +234,17 @@ function Homepage() {
                         </div>
                         <div className="col-xl-5 col-lg-6 col-12">
                             <div className="intro-content">
-                                <h1>Swaptoken With <strong className="text-primary">Bollo</strong>. <br /> Best price in the world
+                                <h1>Swaptoken With <strong className="text-primary">Swap</strong>. <br /> Best price in the world
 
                             </h1>
                                 <p>Fast and secure way to swap cryptocurrencies</p>
                             </div>
 
                             <div className="intro-btn">
-                                <ExternalLink href="https://app.bollo.me">
+                                <ExternalLink href="https://app.swap.me">
                                     <button className="btn  btn-primary">Swap Now</button>
                                 </ExternalLink>
-                                <button onClick={() => clipboard.copy("https://buy.bollo.me/?ref="+acct)} className="btn btn-outline-primary"> Copy Referal Link</button>
+                                <button onClick={() => clipboard.copy("https://buy.swap.me/?ref="+acct)} className="btn btn-outline-primary"> Copy Referal Link</button>
 
                             </div>
 
